@@ -7,7 +7,6 @@ var Client = function(options) {
   if (!options) {
     options = {};
   }
-//  this._host = options.host || 'api.dev.creativelive.com';
   this._host = this._getHost(options);
   this._resource = options.resource || 'courses';
   this._port = options.port || 80;
@@ -39,15 +38,14 @@ _.extend(Client.prototype, {
   },
 
   _makeGetRequest : function(path, callback) {
-    var self = this;
+    var self           = this;
+    var response       = '';
     var requestOptions = {
       hostname : this._host,
       port     : this._port,
       path     : path,
       method   : 'GET'
     };
-console.log("The non-working options are:\n", requestOptions);
-    var response = '';
     var req = http.request(requestOptions, function(res) {
       res.setEncoding('utf8');
       res.on('data', function(chunk) {
@@ -64,7 +62,6 @@ console.log("The non-working options are:\n", requestOptions);
   },
 
   _getData : function(response) {
-console.log("Inside getData, got called with response:\n", response);
     var parsedResponse = JSON.parse(response);
 
     return parsedResponse.data;
