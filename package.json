@@ -1,5 +1,6 @@
 {
   "name" : "crud",
+  "version" : "0.0.1",
   "description" : "Hapi plugin for CRUD routes, and client for same",
   "dependencies" : {
     "underscore": "~1.5.2"
